@@ -49,8 +49,10 @@ void Map::draw(sf::RenderWindow* w)
     for (int x = 0; x < this->width_; x++)
     {
       sprite = getTile(x, y).getSprite();
-      sprite.setPosition(x * sprite.getTextureRect().width,
-                         y * sprite.getTextureRect().height);
+      sprite.setPosition(x * res_->vox_x,//sprite.getTextureRect().width,
+                         y * res_->vox_y);//sprite.getTextureRect().height);
+      sprite.setScale(1 + res_->vox_x/sprite.getTextureRect().width,
+                      1 + res_->vox_y/sprite.getTextureRect().height);
       w->draw(sprite);
     }
   }

@@ -9,7 +9,7 @@
 
 int main()
 {
-  sf::RenderWindow window(sf::VideoMode(800, 600), "Cats & rats");
+  sf::RenderWindow window(sf::VideoMode(800, 600), "kvg");
   Res* res = new Res(&window); // CAREFUL this is also a pointer
   Game game(res); // main container instance, could be a singleton
   while (window.isOpen())
