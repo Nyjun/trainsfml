@@ -1,8 +1,7 @@
 #include "map.hh"
 
-Map::Map(Res* res)
+Map::Map()
 {
-  res_ = res;
   this->load("default");
 }
 
@@ -26,19 +25,19 @@ void Map::load(const std::string& infile)
   this->height_ = std::stoi(s);
   file >> s;
   this->width_ = std::stoi(s);
-  res_->load_sprites();
+  Res::res->load_sprites();
 
-  res_->vox_x = res_->window->getSize().x / this->width_;
-  res_->vox_y = res_->window->getSize().y / this->height_;
+  Res::res->vox_x = Res::res->window->getSize().x / this->width_;
+  Res::res->vox_y = Res::res->window->getSize().y / this->height_;
   this->tiles_ = std::vector<Tile>();
   std::vector<Tile> v;
-  v.insert(it, this->height_ * this->width_, Tile('w', res_));
+  v.insert(it, this->height_ * this->width_, Tile('w'));
   this->tiles_.swap(v);
   v.clear();
 
   for (int y = 0; y < this->height_ && (file >> s); y++)
     for (int x = 0; x < this->width_; x++)
-      setTile(x, y, Tile(s[x], res_));
+      setTile(x, y, Tile(s[x]));
 }
 
 void Map::draw(sf::RenderWindow* w)
@@ -49,10 +48,10 @@ void Map::draw(sf::RenderWindow* w)
     for (int x = 0; x < this->width_; x++)
     {
       sprite = getTile(x, y).getSprite();
-      sprite.setPosition(x * res_->vox_x,//sprite.getTextureRect().width,
-                         y * res_->vox_y);//sprite.getTextureRect().height);
-      sprite.setScale(1 + res_->vox_x/sprite.getTextureRect().width,
-                      1 + res_->vox_y/sprite.getTextureRect().height);
+      sprite.setPosition(x * Res::res->vox_x,//sprite.getTextureRect().width,
+                         y * Res::res->vox_y);//sprite.getTextureRect().height);
+      sprite.setScale(1 + Res::res->vox_x/sprite.getTextureRect().width,
+                      1 + Res::res->vox_y/sprite.getTextureRect().height);
       w->draw(sprite);
     }
   }

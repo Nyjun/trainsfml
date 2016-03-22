@@ -15,13 +15,12 @@ enum class State
 class Game
 {
 public:
-  Game(Res* res);
+  Game();
   ~Game() = default;
   void update();
   void draw();
   void handle_events();
 private:
-  Res* res_;
   Map map;
   sf::RenderWindow* window;
   std::vector<Entity> ennemies;

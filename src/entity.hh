@@ -1,7 +1,6 @@
 #ifndef ENTITY_HH
 # define ENTITY_HH
 
-# include <SFML/Graphics.hpp>
 # include "res.hh"
 
 class Position

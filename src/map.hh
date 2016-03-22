@@ -1,17 +1,15 @@
 #ifndef MAP_HH
 # define MAP_HH
 
-# include <iostream>
 # include <fstream>
 # include <vector>
 # include <string>
 # include "tile.hh"
-# include "res.hh"
 
 class Map
 {
 public:
-  Map(Res* res);
+  Map();
   void load(const std::string& file_path);
   Tile getTile(int x, int y);
   void setTile(int x, int y, Tile tile);
@@ -19,7 +17,6 @@ public:
 private:
   int height_;
   int width_;
-  Res* res_;
   std::vector<Tile> tiles_;
 };
 

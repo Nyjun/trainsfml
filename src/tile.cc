@@ -1,8 +1,7 @@
 #include "tile.hh"
 
-Tile::Tile(char c, Res* res)
+Tile::Tile(char c)
 {
-  res_ = res;
   setSprite(c);
 }
 
@@ -17,10 +16,10 @@ void Tile::setSprite(char c)
   switch (c)
   {
   case 'w':
-    sp_ = sf::Sprite(res_->sp_wall);
+    sp_ = sf::Sprite(Res::res->sp_wall);
     break;
   default:
-    sp_ = sf::Sprite(res_->sp_floor);
+    sp_ = sf::Sprite(Res::res->sp_floor);
     break;
   }
 }

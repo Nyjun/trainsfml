@@ -1,17 +1,15 @@
 #ifndef TILE_HH
 # define TILE_HH
 
-# include <SFML/Graphics.hpp>
 # include "res.hh"
 
 class Tile
 {
 public:
-  Tile(char c, Res* res);
+  Tile(char c);
   sf::Sprite getSprite();
   void setSprite(char c);
 private:
-  Res* res_;
   sf::Sprite sp_;
 };
 

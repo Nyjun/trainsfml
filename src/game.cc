@@ -2,12 +2,11 @@
 
 #define KEY(K) (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
 
-Game::Game(Res* res) :
-  map(res),
+Game::Game() :
+  map(),
   state(State::WELCOME)
 {
-  res_ = res;
-  window = res->window;
+  window = Res::res->window;
   //ennemies.push_back(/* create ennemy here * /);
   //FIXME entity(spawn_x, spawn_y, Direction::down, res->type_get();
 }
