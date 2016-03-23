@@ -1,40 +1,38 @@
 #include "entity.hh"
 
-Position::Position(int x, int y)
+Entity::Entity(int x, int y)
 {
-  this->x = x;
-  this->y = y;
+  setPosition(x, y);
+  sp_ = sf::Sprite(Res::res->sp_char);
 }
 
-Entity::Entity(int pos_x, int pos_y, Direction direction, sf::Sprite& sprite) :
-  direction_(direction),
-  position_(pos_x, pos_y),
-  sprite_(sprite)
-{ }
-
-Position Entity::position_get()
+void Entity::setPosition(int x, int y)
 {
-  return position_;
+  posx = x;
+  posy = y;
 }
 
-void Entity::position_set(Position position)
+void Entity::Draw(sf::RenderWindow* w)
 {
-  position_.x = position.x;
-  position.y = position.y;
+  auto wd = sp_.getTextureRect().width;
+  auto hg = sp_.getTextureRect().height;
+  sp_.setPosition(posx * Res::res->vox_x, posy * Res::res->vox_y);
+  sp_.setScale(Res::res->vox_x/wd,
+               Res::res->vox_y/hg);
+  w->draw(sp_);
 }
 
-Direction Entity::direction_get()
+int Entity::getPosx()
 {
-  return direction_;
+  return posx;
 }
 
-void Entity::direction_set(Direction direction)
+int Entity::getPosy()
 {
-  direction_ = direction;
+  return posy;
 }
 
-void Entity::draw(sf::RenderWindow* window)
+sf::Sprite Entity::getSprite()
 {
-  sprite_.setPosition(position_.x, position_.y);
-  window->draw(sprite_);
+  return this->sp_;
 }

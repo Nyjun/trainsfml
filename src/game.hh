@@ -23,7 +23,7 @@ public:
 private:
   Map map;
   sf::RenderWindow* window;
-  std::vector<Entity> ennemies;
+  Entity player;
   State state;
 };
 

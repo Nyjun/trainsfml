@@ -4,6 +4,7 @@
 
 Game::Game() :
   map(),
+  player(1, 1),
   state(State::WELCOME)
 {
   window = Res::res->window;
@@ -50,7 +51,6 @@ void Game::draw()
   window->clear(sf::Color::Black);
 
   map.draw(window);
-  for (unsigned i = 0; i < ennemies.size(); i++)
-    ennemies[i].draw(window);
+  player.Draw(window);
   window->display();
 }

@@ -12,16 +12,18 @@ public:
   Res(sf::RenderWindow* w);
 
   sf::RenderWindow* window;
-  int vox_x;
-  int vox_y;
+  float vox_x;
+  float vox_y;
   void load_sprites();
   
   sf::Texture txt_floor;
   sf::Texture txt_wall;
- 
+  sf::Texture txt_char;
+
   sf::Sprite sp_floor;
   sf::Sprite sp_wall;
-  
+  sf::Sprite sp_char;
+
   static Res* res;
 };
 

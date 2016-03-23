@@ -3,37 +3,20 @@
 
 # include "res.hh"
 
-class Position
-{
-public:
-  Position(int x, int y);
-  ~Position() = default;
-  int x;
-  int y;
-};
-
-enum class Direction
-{
-  Up,
-  Left,
-  Down,
-  Right
-};
-
 class Entity
 {
 public:
-  Entity(int pos_x, int pos_y, Direction direction, sf::Sprite& sprite);
-  Position position_get();
-  Direction direction_get();
-  void position_set(Position position);
-  void direction_set(Direction direction);
-  void draw(sf::RenderWindow* window);
+  Entity(int x, int y);
+  void setPosition(int x, int y);
+  void Draw(sf::RenderWindow* w);
 
+  int getPosx();
+  int getPosy();
+  sf::Sprite getSprite();
 private:
-  Direction direction_;
-  Position position_;
-  sf::Sprite& sprite_;
+  int posx;
+  int posy;
+  sf::Sprite sp_;
 };
 
 #endif /* !ENTITY_HH */
